@@ -1,0 +1,81 @@
+.register-form {
+    width: 350px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .register-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .register-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .register-form input:focus {
+    border-color: #9f93ea;
+  }
+  
+  .register-form p {
+    color: red;
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  .submit-btn {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background: #8d7df0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .submit-btn:hover {
+    background: #5a4ec3;
+  }
+
+  .register-form img {
+    height: 10px;
+    width: 10px
+  }
+ 
+  .wrapper{
+    display:inline-block;
+    position:relative
+  }
+  
+  .btnimg{
+    pointer-events:none;
+    width:250px;
+    height:90px;
+    opacity:1;
+    line-height:90px;
+    text-align:center;
+  }
+  
+  input[type=file]{
+    opacity:0;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  }
