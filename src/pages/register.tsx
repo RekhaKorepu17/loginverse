@@ -2,13 +2,33 @@ import { useForm } from "react-hook-form";
 import "./register.css";
 import profile from "../assets/profile-pic.jpeg";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import axios from "axios";
+import { useState } from "react";
+
 export const Register = () => {
+  const [imageUrl, setImageUrl] = useState(" ");
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const registerUser = (data: any) => {};
+  const registerUser = async (data: any) => {
+    try {
+      const formData = {
+        firstName: data.firstname,
+        lastName: data.lastname,
+        imageUrl,
+      };
+      const response = await axios.post('http://13.232.204.144:3005/api/users', formData);
+      if (response.status === 201) {
+        window.alert("User registered successfully");
+      } else if (response.status === 409) {
+        window.alert("User already exists");
+      }
+    } catch (err) {
+      window.alert("Eror while creating a user");
+    }
+  };
 
   const S3_BUCKET = import.meta.env.VITE_S3_BUCKET || "";
   const REGION = import.meta.env.VITE_REGION || "";
@@ -40,11 +60,15 @@ export const Register = () => {
 
     try {
       const results = await s3Client.send(new PutObjectCommand(params));
-      alert("upload succesful");
+      const uploadedImageUrl =
+        `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${selectedProfile.name}` ||
+        " ";
+      setImageUrl(uploadedImageUrl);
+
       return results;
     } catch (err) {
       console.log("Error", err);
-      alert("Error uploading image");
+      window.alert("Error uploading image");
     }
   };
   return (
@@ -69,7 +93,7 @@ export const Register = () => {
       </form>
       <video width={600} height={400} controls loop autoPlay>
         <source
-          src="https://drp8s8qo6la03.cloudfront.net/samplevideo.mp4"
+          src="https://d90y3w005lpp6.cloudfront.net/register-demo-video.mp4"
           type="video/mp4"
         />
       </video>
