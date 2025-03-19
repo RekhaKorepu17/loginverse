@@ -1,0 +1,24 @@
+name: loginVerse-frontend
+on:
+  push:
+    branches:
+      - feature/user-registration 
+jobs:
+  Build-and-test:
+    runs-on: macos-latest
+    steps:
+      - name: Check Git version
+        run: git --version
+
+      - name: Checkout repository code
+        uses: actions/checkout@v2
+
+      - name: Install required dependencies
+        run: npm install
+
+      - name: Run tests
+        run: |
+          npm test
+      - name: Build the project
+        run: |
+          npm run build
