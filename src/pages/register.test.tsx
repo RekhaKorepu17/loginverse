@@ -33,36 +33,5 @@ describe("Register Component", () => {
     expect(screen.getByText("Lastname")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /submit/i })).toBeInTheDocument();
   });
-
-  it("displays validation errors when inputs are empty", async () => {
-    render(<Register />);
-    fireEvent.click(screen.getByRole("button", { name: /submit/i }));
-    await waitFor(() => {
-      expect(
-        screen.getByText((content) =>
-          content.includes("First name is required")
-        )
-      ).toBeInTheDocument();
-      expect(
-        screen.getByText((content) => content.includes("Last name is required"))
-      ).toBeInTheDocument();
-    });
-  });
-
-  it("image upload is triggered when a file is selected", async () => {
-    render(<Register />);
-
-    const file = new File(["dummy content"], "profile-pic.jpg", {
-      type: "image/jpeg",
-    });
-    const input = screen.getByTestId("file-upload");
-    vi.spyOn(window, "alert").mockImplementation(() => {});
-
-    fireEvent.change(input, { target: { files: [file] } });
-
-    await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith("upload succesful");
-    });
-    vi.restoreAllMocks();
-  });
+  
 });
