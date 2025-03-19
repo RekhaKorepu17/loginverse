@@ -11,3 +11,35 @@ When a image is uploaded to S3 bucket, lambda function is triggered and it resiz
 ##### Demo-video
 When users access the application, a demo video is played which includes how to register to the system. It will help and enhance user experience to register easily.
 
+
+## Technologies Used
+- React.js
+- Node.js
+
+## Installation and Setup
+
+### Prerequisites
+Ensure the following are installed on your system:
+- Node.js 
+- npm 
+
+
+### Steps to Clone and Run the Project
+1. Clone the repository:
+``` '
+git clone https://github.com/RekhaKorepu17/loginverse.git
+
+```
+2. Navigate to project directory
+``` '
+cd loginverse
+```
+3. Install dependencies
+```
+npm install
+```
+4.  Start the application:
+```
+npm run dev
+```
+Once the application starts, open your browser and navigate to `http://localhost:5173` to access the Event Management System.
